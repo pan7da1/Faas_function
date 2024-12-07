@@ -1,0 +1,31 @@
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+
+functions:
+  hello-python:
+    lang: python3
+    handler: ./hello-python
+    image: pan7da1/hello-python
+    environment:
+      faas_gateway_address: gateway
+    depends_on:
+      - gateway
+
+  greet-python:
+    lang: python3
+    handler: ./greet-python
+    image: pan7da1/greet-python
+    environment:
+      faas_gateway_address: gateway
+    depends_on:
+      - gateway
+
+  square-python:
+    lang: python3
+    handler: ./square-python
+    image: pan7da1/square-python
+    environment:
+      faas_gateway_address: gateway
+    depends_on:
+      - gateway
